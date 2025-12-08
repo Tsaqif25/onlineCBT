@@ -54,7 +54,7 @@ function handleImageError() {
                             />
                         </svg>
                     </div>
-                    <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
+                    <!-- <nav v-if="canLogin" class="-mx-3 flex flex-1 justify-end">
                         <Link
                             v-if="$page.props.auth.user"
                             :href="route('dashboard')"
@@ -79,7 +79,7 @@ function handleImageError() {
                                 Register
                             </Link>
                         </template>
-                    </nav>
+                    </nav> -->
                 </header>
 
                 <main class="mt-6">
