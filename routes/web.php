@@ -45,4 +45,36 @@ Route::prefix('admin')->group(function() {
 });
 });
 
+Route::prefix('student')->group(function() {
+
+    //middleware "student"
+    Route::group(['middleware' => 'student'], function () {
+        
+        //route dashboard
+        Route::get('/dashboard', App\Http\Controllers\Student\DashboardController::class)->name('student.dashboard');
+    
+        //route exam confirmation
+        Route::get('/exam-confirmation/{id}', [App\Http\Controllers\Student\ExamController::class, 'confirmation'])->name('student.exams.confirmation');
+    
+        //route exam start
+        Route::get('/exam-start/{id}', [App\Http\Controllers\Student\ExamController::class, 'startExam'])->name('student.exams.startExam');
+        
+         //route exam show
+         Route::get('/exam/{id}/{page}', [App\Http\Controllers\Student\ExamController::class, 'show'])->name('student.exams.show');
+    
+        //route exam update duration
+        Route::put('/exam-duration/update/{grade_id}', [App\Http\Controllers\Student\ExamController::class, 'updateDuration'])->name('student.exams.update_duration');
+        
+        //route answer question
+        Route::post('/exam-answer', [App\Http\Controllers\Student\ExamController::class, 'answerQuestion'])->name('student.exams.answerQuestion');
+        
+        //route exam end
+        Route::post('/exam-end', [App\Http\Controllers\Student\ExamController::class, 'endExam'])->name('student.exams.endExam');
+        
+        //route exam result
+        Route::get('/exam-result/{exam_group_id}', [App\Http\Controllers\Student\ExamController::class, 'resultExam'])->name('student.exams.resultExam');
+    });
+
+});
+
 require __DIR__.'/auth.php';

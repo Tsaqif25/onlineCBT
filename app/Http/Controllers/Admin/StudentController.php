@@ -58,7 +58,8 @@ class StudentController extends Controller
         'name' => $request->name,
         'nisn' => $request->nisn,
         'gender' => $request->gender,
-        'password' => $request->password,
+     'password' => bcrypt($request->password),
+
         'classroom_id'=> $request->classroom_id
        ]);
 
@@ -114,7 +115,8 @@ class StudentController extends Controller
                         'name' => $request->name,
                         'nisn' => $request->nisn,
                         'gender' => $request->gender,
-                        'password' => $request->password,
+                       'password' => bcrypt($request->password),
+
                         'classroom_id' => $request->classroom_id
                     ]);
                 }

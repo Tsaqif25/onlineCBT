@@ -40,9 +40,12 @@ class HandleInertiaRequests extends Middleware
             'error'     => fn () => $request->session()->get('error'),
         ],
         //user authenticated
-        'auth'  =>[
-            'user'          => auth()->user() ?   auth()->user() : null,
-        ],
+  //user authenticated
+'auth'  =>[
+    'user'    => auth()->user() ?   auth()->user() : null,
+    'student' => auth()->guard('student')->user()  ?   auth()->guard('student')->user() : null,
+],
+
 
         //api key tinymce
         'TinyMCEApiKey' => config('tinymce.api_key'),
